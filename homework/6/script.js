@@ -8,3 +8,5 @@ document.getElementById("hider").addEventListener("click", function() {
       textElement.style.display = "none";
   }
 });
+
+

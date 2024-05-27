@@ -1,16 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Проверка delay функции</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <title>Image Carousel</title>
 </head>
 <body>
+
   <section>
     <input type="button" id="hider" value="Нажмите, чтобы спрятать текст" />
 
     <div id="text">Текст</div>
   </section>
-    <script src="script.js"></script>
+
+<div id="carousel" class="carousel">
+  <button class="arrow prev">⇦</button>
+  <div class="gallery">
+    <ul>
+      <li><img src="images/1.png" alt="1"></li>
+      <li><img src="images/2.png" alt="2"></li>
+      <li><img src="images/3.png" alt="3"></li>
+      <li><img src="images/4.png" alt="4"></li>
+      <li><img src="images/5.png" alt="5"></li>
+      <li><img src="images/6.png" alt="6"></li>
+      <li><img src="images/7.png" alt="7"></li>
+      <li><img src="images/8.png" alt="8"></li>
+      <li><img src="images/9.png" alt="9"></li>
+      <li><img src="images/10.png" alt="10"></li>
+    </ul>
+  </div>
+  <button class="arrow next">⇨</button>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.getElementById('carousel');
+    const gallery = carousel.querySelector('.gallery ul');
+    const images = gallery.querySelectorAll('li');
+    const prevButton = carousel.querySelector('.prev');
+    const nextButton = carousel.querySelector('.next');
+
+    const imageWidth = 130;
+    const visibleCount = 3; 
+    const scrollCount = 3; 
+
+    let marginIndex = 0;
+
+    function updateGalleryPosition() {
+      const newMargin = -marginIndex * imageWidth;
+      gallery.style.marginLeft = `${newMargin}px`;
+    }
+
+    prevButton.addEventListener('click', () => {
+      if (marginIndex > 0) {
+        marginIndex -= scrollCount;
+        if (marginIndex < 0) {
+          marginIndex = 0;
+        }
+        updateGalleryPosition();
+      }
+      console.log(marginIndex)
+      console.log(gallery.style.marginLeft)
+    });
+
+    nextButton.addEventListener('click', () => {
+      if (marginIndex < images.length - visibleCount) {
+        marginIndex += scrollCount;
+        if (marginIndex > images.length - visibleCount) {
+          marginIndex = images.length - visibleCount;
+        }
+        updateGalleryPosition();
+      }
+      console.log(marginIndex)
+      console.log(gallery.style.marginLeft)
+    });
+  });
+</script>
+
+
 </body>
 </html>

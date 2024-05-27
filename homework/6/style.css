@@ -1,0 +1,44 @@
+.carousel {
+  position: relative;
+  width: 390px; /* Ширина карусели */
+  overflow: hidden; /* Скрывает лишние изображения */
+}
+
+.gallery {
+  display: flex;
+  transition: margin-left 0.5s;
+}
+
+.gallery ul {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.gallery li {
+  display: inline-block;
+}
+
+.gallery img {
+  display: block;
+  width: 130px;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}
